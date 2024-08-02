@@ -11,11 +11,6 @@ class FraudDetection:
         self.transfer_dict = {}
         self.cash_out_dict = {}
 
-    def data_summary(self):
-        print(self.df.describe())
-        print(self.df.isnull().sum())
-        print(self.df.head(10))
-
     def clean_data(self):
         unique_amounts_with_count_1 = self.df[self.df['isFraud'] == 1]['amount'].value_counts()
         amounts_to_drop = unique_amounts_with_count_1[unique_amounts_with_count_1 == 1].index
