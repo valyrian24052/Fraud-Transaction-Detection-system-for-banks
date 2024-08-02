@@ -1,0 +1,18 @@
+
+from fraud_detection import FraudDetection
+
+def main():
+    file_path = 'Fraud.csv'
+    fraud_detection = FraudDetection(file_path)
+
+    fraud_detection.data_summary()
+    fraud_detection.clean_data()
+    fraud_detection.create_transfer_cashout_dicts()
+    fraud_detection.identify_pairs()
+    fraud_detection.add_features()
+    result_df = fraud_detection.train_model()
+    print(result_df[result_df['y_test'] != result_df['y_pred']])
+    fraud_detection.exploratory_data_analysis()
+
+if __name__ == "__main__":
+    main()
